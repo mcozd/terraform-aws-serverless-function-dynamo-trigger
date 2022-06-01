@@ -1,8 +1,8 @@
 resource "aws_lambda_event_source_mapping" "trigger" {
   event_source_arn = var.source_arn
   function_name = var.function.arn
-  maximum_retry_attempts = 0
-  batch_size = 1
+  maximum_retry_attempts = var.retries
+  batch_size = var.batch_size
   starting_position = "LATEST"
 }
 
