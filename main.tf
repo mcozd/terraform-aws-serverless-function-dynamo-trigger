@@ -12,7 +12,8 @@ data "aws_iam_policy_document" "dynamo" {
     actions = [
       "dynamodb:GetRecords",
       "dynamodb:DescribeStream",
-      "dynamodb:ListStreams" ]
+      "dynamodb:ListStreams",
+      "dynamodb:GetShardIterator" ]
     resources = [ var.source_arn ]
   }
 }
