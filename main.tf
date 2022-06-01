@@ -11,7 +11,8 @@ data "aws_iam_policy_document" "dynamo" {
     effect = "Allow"
     actions = [
       "dynamodb:GetRecords",
-      "dynamodb:DescribeStream" ]
+      "dynamodb:DescribeStream",
+      "dynamodb:ListStreams" ]
     resources = [ var.source_arn ]
   }
 }
