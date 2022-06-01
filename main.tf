@@ -8,10 +8,9 @@ resource "aws_lambda_event_source_mapping" "trigger" {
 
 data "aws_iam_policy_document" "dynamo" {
   statement {
-    effect = Allow
+    effect = "Allow"
     actions = [ "dynamodb:GetRecords" ]
     resources = [ var.source_arn ]
-    // Resource": "arn:aws:dynamodb:us-west-2:123456789012:table/GameScores/stream/*"
   }
 }
 
