@@ -22,5 +22,5 @@ resource "aws_iam_policy" "dynamo" {
 
 resource "aws_iam_role_policy_attachment" "dynamo" {
   policy_arn = aws_iam_policy.dynamo.arn
-  role = var.function.role
+  role = var.function.role.name
 }
