@@ -17,12 +17,22 @@ variable "retries" {
   type = number
   description = "The amount of times the batch (whole or only failed ones) should be reprocessed."
   default = 0
+
+  validation {
+    condition = var.retries >= 0
+    error_message = "The number of retries cannot be negative."
+  }
 }
 
 variable "batch_size" {
   type = number
   description = "The number of items that should be processed in one batch."
   default = 10
+
+  validation {
+    condition = var.batch_size > 0
+    error_message = "The batch size cannot be negative and must be greather then zero."
+  }
 }
 
 variable "bisect_on_failure" {
