@@ -47,7 +47,7 @@ variable "batch_time" {
 }
 
 variable "bisect_on_failure" {
-  type = boolean
+  type = bool
   description = "Splits the batch in half and retries every part separately. This can lead to better error handling, because the failed records can be split into their own batches and the function will likely get batches with working records, so that a failure does not affect the whole batch size. Works only when the batch size is greater then 1."
   default = false
 }
