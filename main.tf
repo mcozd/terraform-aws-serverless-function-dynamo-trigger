@@ -3,7 +3,7 @@ locals {
 }
 
 resource "aws_lambda_event_source_mapping" "trigger" {
-  event_source_arn = var.source_arn
+  event_source_arn = var.stream_arn
   function_name = var.function.arn
   maximum_retry_attempts = var.retries
   batch_size = var.batch_size
@@ -20,7 +20,7 @@ data "aws_iam_policy_document" "dynamo" {
       "dynamodb:DescribeStream",
       "dynamodb:ListStreams",
       "dynamodb:GetShardIterator" ]
-    resources = [ var.source_arn ]
+    resources = [ var.stream_arn ]
   }
 }
 
