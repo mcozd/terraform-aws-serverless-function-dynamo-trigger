@@ -35,6 +35,17 @@ variable "batch_size" {
   }
 }
 
+variable "batch_time" {
+  type = number
+  description = "The maximum amount of time in seconds to wait before records will be send to your function automatically. Either the batch size or the batch time has to bea reached for your function to be invoked."
+  default = 0
+
+  validation {
+    condition = var.batch_time >= 0 && var.batch_time <= 300
+    error_message = "The max. amount of time for batches must be between 0 and 300 seconds."
+  }
+}
+
 variable "bisect_on_failure" {
   type = boolean
   description = "Splits the batch in half and retries every part separately. This can lead to better error handling, because the failed records can be split into their own batches and the function will likely get batches with working records, so that a failure does not affect the whole batch size. Works only when the batch size is greater then 1."

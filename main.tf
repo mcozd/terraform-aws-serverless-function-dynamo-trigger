@@ -7,6 +7,7 @@ resource "aws_lambda_event_source_mapping" "trigger" {
   function_name = var.function.arn
   maximum_retry_attempts = var.retries
   batch_size = var.batch_size
+  maximum_batching_window_in_seconds = var.batch_time
   starting_position = "LATEST"
   bisect_batch_on_function_error = local.bisect_on_failure
 }
