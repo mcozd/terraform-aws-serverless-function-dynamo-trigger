@@ -5,12 +5,12 @@ variable "function" {
 
 variable "function_role" {
   type = any
-  description = "The role of the function that should be triggered. Is needed to attach required permissions."
+  description = "The role of the triggered function. This is needed to attach required permissions."
 }
 
-variable "source_arn" {
+variable "stream_arn" {
   type = string
-  description = "The arn of the event source (e.g. DynamoDb Stream)."
+  description = "The arn of the DynamoDb Stream."
 }
 
 variable "retries" {
